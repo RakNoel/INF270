@@ -1,0 +1,146 @@
+%	Default Layout
+%	Oskar L. F. Lerivåg
+
+\documentclass[a4paper, 12pt]{article}
+
+%Bookmarks
+\usepackage[colorlinks=true,urlcolor=cyan,linkcolor=black,citecolor=red,bookmarksopen=true]{hyperref}
+\usepackage{bookmark}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usetikzlibrary{arrows}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{epigraph}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[numbered,framed]{matlab-prettifier}
+
+%Images%
+\usepackage{graphicx}
+\usepackage{float}
+
+%Margins
+\usepackage{geometry}
+\geometry{a4paper, margin=3cm}
+
+%Citations
+\usepackage[round]{natbib}
+\bibliographystyle{plainnat}
+
+\newcommand{\mysection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
+\newcommand{\mysubsection}[1]{\subsection*{#1} \addcontentsline{toc}{subsection}{#1}}
+\newcommand{\mysubsubsection}[1]{\subsubsection*{#1} \addcontentsline{toc}{subsubsection}{#1}}
+
+\newcommand{\myFigure}[3]{\begin{figure}[h!]\centering\includegraphics[scale=#1]{figures/#2}\caption{#3}\end{figure}}
+
+\newcommand{\mycitation}[1]{[\citet{#1}]}
+
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
+
+\begin{document}
+
+    % % % % % % % % % % % % % % % % %
+    %
+    %	FRONT PAGE
+    %
+    \input{./uib_frontpage.tex}
+
+    % % % % % % % % % % % % % % % % %
+    %
+    %	TABLE OF CONTENTS
+    %
+    \pdfbookmark{\contentsname}{toc}
+    \tableofcontents
+    \newpage
+
+    % % % % % % % % % % % % % % % % %
+    %
+    %	BEGIN
+    %
+	\mysection{Ex 1:}
+	\begin{enumerate}[a)]
+		\item 
+		Minimize $b^\top y$ subject to $A^\top y \geq c$
+		
+		\item Duality theorems
+		\begin{itemize}
+			\item Weak: $max_x c^\top x \leq min_y b^\top y$	
+			\item Strong: $max_x c^\top x = miny b^\top y$
+		\end{itemize}				
+	    
+	    \item ?
+	\end{enumerate}
+	\mycitation{wiki:LP:dual}    
+	
+	\newpage	
+	
+	\mysection{Ex 2:}
+		\lstinputlisting[caption = {basics function}]{src/myBasics.m}
+		\lstinputlisting[caption = {main method}]{src/partTwoC.m}
+		
+		Output:
+		\begin{enumerate}[i)]
+			\item
+			$x_{B}^{*} = \begin{bmatrix}
+			1 & 3 & 5
+			\end{bmatrix}^\top  \quad x_{N}^{*} = \begin{bmatrix}
+			0 & 0
+			\end{bmatrix}^\top$
+			
+			\item
+			$x_{B}^{*} = \begin{bmatrix}
+			1 & 1 & 5
+			\end{bmatrix}^\top  \quad x_{N}^{*} = \begin{bmatrix}
+			0 & 0
+			\end{bmatrix}^\top$
+
+			\item
+			$x_{B}^{*} = \begin{bmatrix}
+			2 & 1 & 4
+			\end{bmatrix}^\top  \quad x_{N}^{*} = \begin{bmatrix}
+			0 & 0
+			\end{bmatrix}^\top$
+
+			\item
+			$x_{B}^{*} = \begin{bmatrix}
+			4 & 5 & 2
+			\end{bmatrix}^\top  \quad x_{N}^{*} = \begin{bmatrix}
+			0 & 0
+			\end{bmatrix}^\top$
+
+			\item
+			$x_{B}^{*} = \begin{bmatrix}
+			6 & 5 & -4
+			\end{bmatrix}^\top  \quad x_{N}^{*} = \begin{bmatrix}
+			0 & 0
+			\end{bmatrix}^\top$
+		\end{enumerate}
+		
+		\newpage
+		
+		\mysection{Ex 3:}
+		\begin{enumerate}[i)]
+			\item
+			
+		\end{enumerate}
+    
+    % % % % % % % % % % % % % % % % %
+    %
+    %	ADD REFERANCES
+    %
+	\newpage    
+    \bibliography{citation-db}
+    \addcontentsline{toc}{section}{References}
+
+\end{document}
