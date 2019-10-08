@@ -1,6 +1,6 @@
 clc; clear;
 
-% Task 2 C
+% Part 2 C
 i = [3;4;5];
 ii = [1;4;5];
 iii = [1;2;5];

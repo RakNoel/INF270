@@ -27,7 +27,7 @@
 
 %Margins
 \usepackage{geometry}
-\geometry{a4paper, margin=3cm}
+\geometry{a4paper, margin=1cm}
 
 %Citations
 \usepackage[round]{natbib}
@@ -62,13 +62,15 @@
     %
     \pdfbookmark{\contentsname}{toc}
     \tableofcontents
+    \lstlistoflistings
     \newpage
 
     % % % % % % % % % % % % % % % % %
     %
     %	BEGIN
     %
-	\mysection{Ex 1:}
+	\mysection{Ex 1}
+	\mysubsection{Result}
 	\begin{enumerate}[a)]
 		\item 
 		Minimize $b^\top y$ subject to $A^\top y \geq c$
@@ -85,11 +87,12 @@
 	
 	\newpage	
 	
-	\mysection{Ex 2:}
+	\mysection{Ex 2}
+		\mysubsection{Code}
 		\lstinputlisting[caption = {basics function}]{src/myBasics.m}
-		\lstinputlisting[caption = {main method}]{src/partTwoC.m}
+		\lstinputlisting[caption = {main method part 2}]{src/partTwoC.m}
 		
-		Output:
+		\mysubsection{Result}
 		\begin{enumerate}[i)]
 			\item
 			$x_{B}^{*} = \begin{bmatrix}
@@ -129,11 +132,74 @@
 		
 		\newpage
 		
-		\mysection{Ex 3:}
+		\mysection{Ex 3}
+		\mysubsection{Code}
+		\lstinputlisting[caption = {Simplex implementation}]{src/mySimplex.m}
+		\newpage
+		\lstinputlisting[caption = {main method part 3}]{src/partThree.m}
+		\newpage
+		\mysubsection{Result}
 		\begin{enumerate}[i)]
 			\item
+			p 2.1: 
+			$\begin{bmatrix}
+				2.0000\\
+				0 \\
+				1.0000\\
+				0\\
+			\end{bmatrix} \quad \begin{bmatrix}
+				2.0000\\
+         		0\\
+   				1.0000\\
+        			0
+			\end{bmatrix}$
+
+			\item
+			p 2.2: 
+    			$\begin{bmatrix}
+    				1\\
+    				0
+			\end{bmatrix} \quad \begin{bmatrix}
+				1\\
+				0
+			\end{bmatrix}$
 			
+			\item
+			p 2.8:
+			$\begin{bmatrix}
+    				4.0000\\
+		    		8.0000
+			\end{bmatrix} \quad \begin{bmatrix}
+				4.0000\\
+		    		8.0000
+			\end{bmatrix}$
+			
+			\item
+			?		
 		\end{enumerate}
+		
+	\newpage
+	
+	\mysection{Ex 4}
+	\mysubsection{Code}
+	\lstinputlisting[caption = {main method part 4}]{src/partFour.m}
+	\mysubsection{Result}
+	\begin{enumerate}[a)]
+		\item
+		By using the method from Ex 3 we get the result of $B = \begin{bmatrix}
+    				1\\
+    				0\\
+    				0
+			\end{bmatrix}$
+		
+		\item
+		and then simply plot that into the function we are maximising giving us 
+		\[
+			maxim = 4x_1 + x_2 + x_3 = 4*1 + 1*0 + 1*0 = 4
+		\]
+	\end{enumerate}		
+	
+	
     
     % % % % % % % % % % % % % % % % %
     %
