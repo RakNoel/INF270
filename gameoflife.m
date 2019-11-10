@@ -8,11 +8,11 @@ currentGrid = randi([0 1], height, width); %0 = alive, 1=dead
 
 for itt = 1:1000
     drawGrid(currentGrid);
-    currentGrid = runGameCound(currentGrid);
+    currentGrid = runGameRound(currentGrid);
     pause(0.1);
 end
 
-function newGrid = runGameCound(currentGrid)
+function newGrid = runGameRound(currentGrid)
     [h, w] = size(currentGrid);
     newGrid = zeros(h,w);
     for i = 1:w
@@ -33,23 +33,22 @@ function ign = drawGrid(mat)
          'GridLineStyle', '-', 'XGrid', 'on', 'YGrid', 'on');
 end
 
-function neigbohurCount = getCellNeighbours(x, y, vgrid)
+function neighbourCount = getCellNeighbour(x, y, vgrid)
     [height, width] = size(vgrid);
-    neigbohurCount = 0;
+    neighbourCount = 0;
     n = [[x-1 y-1]; [x y-1]; [x+1 y-1]; [x-1 y]; [x+1 y]; [x-1 y+1]; [x y+1]; [x+1 y+1]];
     for i = 1:length(n)
-            if (n(i,1) < 1 || n(i,2) < 1 || n(i,2) > height || n(i,1) > width)
-               continue;
-            elseif (vgrid(n(i,1), n(i,2)) == 0)
-                neigbohurCount = neigbohurCount + 1;
-            end
+    	if (n(i,1) < 1 || n(i,2) < 1 || n(i,2) > height || n(i,1) > width)
+        	continue;
+        elseif (vgrid(n(i,1), n(i,2)) == 0)
+        	neighbourCount = neighbourCount + 1;
+    	end
     end
 end
 
 function nextCellState = getCellNextState(x, y, vgrid)
-    currentN = getCellNeighbours(x, y, vgrid);
+    currentN = getCellNeighbour(x, y, vgrid);
     currentC = vgrid(x, y);
-    
     if (currentN == 3 || (currentC == 0 && currentN >= 2 && currentN <= 3))
         nextCellState = 0;
     else
